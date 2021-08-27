@@ -1,0 +1,46 @@
+<body>
+
+  <div class="flash">
+    <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+    <% end %>
+  </div>
+
+  <div class="user-info">
+    <h2>User info</h2>
+  <%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg" %>
+  <p>name</p>
+  <%= @user.name %>
+  <p>introduction</p>
+  <%= @user.caption %>
+  <%= link_to 'プロフィール編集', edit_user_path(current_user.id) %>
+  </div>
+
+  <div class="new_book">
+    <h2>New Book</h2>
+    <%= form_with model:@newbook, local:true do |f| %>
+
+    <h4>Title</h4>
+    <%= f.text_field :title %>
+
+    <h4>Opinion</h4>
+    <%= f.text_area :body %>
+
+    <%= f.submit 'Create Book' %>
+  <% end %>
+
+
+  </div>
+
+  <div class="books">
+    <h2>Book detail</h2>
+    <tr>
+      　<%= @user.name %> 
+          <td><span><%= @book.title %></span></td>
+          <td><span><%= @book.body %></span></td>
+          <%= link_to "edit", edit_book_path %>
+          <%= link_to "Destroy", book_path(@book.id),method: :delete %>
+    </tr>
+  </div>
+
+</body>

@@ -1,0 +1,11 @@
+<h1>editting book</h1>
+<%= form_with model:@book, local:true do |f| %>
+
+  <div class="book-title">Title</div>
+    <%= f.text_field :title %>
+  <div class="book-body">Opinion</div>
+    <%= f.text_area :body %><br>
+  <div class="book-upload">
+    <%= f.submit " Update Book" %>
+  </div>
+<% end %>
