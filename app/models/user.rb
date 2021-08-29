@@ -3,7 +3,11 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
-         
+
   has_many :books, dependent: :destroy
   attachment :profile_image
+
+  validates :name, uniqueness: true
+  validates :name, presence: true, length: { in: 2..20 }
+  validates :intr, length: { maximum: 50 }
 end

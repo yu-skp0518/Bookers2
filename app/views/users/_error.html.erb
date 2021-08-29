@@ -1,0 +1,16 @@
+        <div class="flash">
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "#{key}") %>
+          <% end %>
+        </div>
+    
+        <p id="notice"></p>
+        <div id="error_explanation">
+          <% if @book.errors.any? %>
+          <h3><%= @book.errors.count %>error prohibited this obj from being saved:</h3>
+          <% @book.errors.full_messages.each do |message| %>
+              <ul>
+                <li><%= message %></li>
+              </ul>
+            <% end %>
+        <% end %>
