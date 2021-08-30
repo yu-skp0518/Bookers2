@@ -6,6 +6,7 @@
         <div class="col-md-3">
           <h2>User info</h2>
           <div class="attachment user profile_image fallback"><%= attachment_image_tag @user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:'100x100' %></div>
+
             <table class="table">
               <tbody>
                 <tr></tr>
@@ -21,13 +22,14 @@
             </table>
 
           <div class="row">
-            <a class="btn btn-outline-secondary btn-block fas fa-user-cog edit_user_17488" href="<%= edit_user_path(current_user.id) %>"></a>
+            <%= link_to edit_user_path(@user.id), class: "btn btn-outline-secondary btn-block" do %>
+              <div class="fas fa-user-cog"></div>
+            <% end %>
           </div>
 
-           <h2 class="mt-3">New book</h2>
-<!-------------------------------------------------------------------------------------------->
-      <%= render 'books/input_newbook', book: @book %>
-<!-------------------------------------------------------------------------------------------->
+            <h2 class="mt-3">New book</h2>
+            <%= render 'books/input_newbook', book: @book %>
+
           </div>
 
         <div class="col-md-8 offset-md-1">
@@ -50,9 +52,10 @@
     		          <tbody>
     		            <tr>
     		              <% @books.each do |book| %>
-                      <td><a href="">
-                        <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %><br>
-                          </a>
+                      <td>
+                        <%= link_to user_path(@user.id) do %>
+                            <%= attachment_image_tag @user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg", size:'40x40' %><br>
+                          <% end %>
                       </td>
                       <td>
                         <%= link_to book_path(book.id) do %>

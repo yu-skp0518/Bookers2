@@ -1,58 +1,40 @@
-<!--<h1>editting book</h1>-->
-<!--<%= form_with model:@book, local:true do |f| %>-->
-
-<!--  <div class="book-title">Title</div>-->
-<!--    <%= f.text_field :title %>-->
-<!--  <div class="book-body">Opinion</div>-->
-<!--    <%= f.text_area :body %><br>-->
-<!--  <div class="book-upload">-->
-<!--    <%= f.submit " Update Book" %>-->
-<!--  </div>-->
-<!--<% end %>-->
-
-<!----------------------------------------------------------------------------------------------------------------------->
-
-
-<main>
-  <p id="notice"></p>
-  <div id="error_explanation">
-  <% if @book.errors.any? %>
-  <h3><%= @book.errors.count %>件のエラーが発生しました</h3>
-  <% @book.errors.full_messages.each do |message| %>
-    <ul>
-      <li><%= message %></li>
-    </ul>
-    <% end %>
-  <% end %>
-  
+<body>
+  <main>
     <div class="container">
-      <div class="row">
-        <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
-  		    <h1>Editing Book</h1>
-  		    <%= form_with model:@book, local:true do |f| %>
-  		    
-                <div class="form-group">
-                  <label for="book_title">Title</label>
-                  <th><%= f.text_field :title %></th>
-                </div>
-
-                <div class="form-group">
-                  <label for="book_opinion">Opinion</label>
-                  <%= f.text_area :body %>
-                </div>
-
-                <div class="form-group">
-                  <%= f.submit " Update Book" %>
-                </div>
-              <% end %>
-              </form>
-              <td>
-                
-      <a class="<%= book_path(@book.id) %>" href="<%= book_path(@book.id) %>">Show</a> |
-      <a class="back" href="/books">Back</a>
-      </div>
+      
+        <div class="row mx-auto">
+          <p id="notice"></p>
+          <%= render 'users/error', book: @book %>
+        </div>
+        
     </div>
-  </div>
-</main>
 
+        <div class="row mx-auto">
+          <div class="col-sm-12 col-md-8 col-lg-5 px-5 px-sm-0 mx-auto">
+            <h2 class="col-sm-12 pl-0">Editing Book</h2>
+  		    <%= form_with model:@book, local:true do |f| %>
 
+            <div class="form-group">
+              <label for="book_title">Title</label>
+              <th><%= f.text_field :title, class: "form-control", autofocus: true, id:"inputName", placeholder:"名前" %></th>
+            </div>
+            
+            <div class="form-group">
+              <label class="col-sm-12 pl-0" for="book_opinion">Opinion</label>
+              <%= f.text_area :body %>
+            </div>
+            
+            <div class="form-group">
+              <%= f.submit " Update Book", class:"btn btn-success"%>
+            </div>
+            
+          <% end %>
+ 
+            <a class="<%= book_path(@book.id) %>" href="<%= book_path(@book.id) %>">Show</a> |
+            <a class="back" href="/books">Back</a>
+          
+          </div>
+        </div>
+    </div>
+  </main>
+</body>
