@@ -2,15 +2,26 @@
     <%= attachment_image_tag current_user, :profile_image, :fill, 50, 50, fallback: "no_image.jpg", size:'100x100' %>
     <table class="table">
       <tbody>
-        <tr>
-        </tr>
-        <tr>
-          <th>name</th>
-          <th><%= current_user.name %></th>
-        </tr>
-        <tr>
-          <th>introduction</th>
+      <tr>
+      </tr>
+      <tr>
+        <th>name</th>
+        <th><%= current_user.name %></th>
+      </tr>
+      <tr>
+        <th>introduction</th>
         <th><%= current_user.introduction %></th>
+      </tr>
+
+      <tr>
+        <th>follow</th>
+        <th><%= link_to @user.relationships.count, followeds_user_path(@user) %></th>
+      </tr>
+       <tr>
+        <th>follower</th>
+        <th><%= link_to @user.reverse_of_relationships.count, followers_user_path(@user) %></th>
+      </tr>
+      <tr>
       </tr>
       </tbody>
     </table>

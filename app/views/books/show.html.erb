@@ -16,6 +16,13 @@
             	      <th>introduction</th>
                   <th><%= @user.introduction %></th>
                 </tr>
+                　<th>follow</th>
+                  <th><%= link_to @user.relationships.count, followeds_user_path(@user) %></th>
+                </tr>
+                <tr>
+                  <th>follower</th>
+                  <th><%= link_to @user.reverse_of_relationships.count, followers_user_path(@user) %></th>
+                </tr>
             </tbody>
           </table>
 
