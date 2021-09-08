@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get 'home/about' => 'homes#about'
   get 'favorites/create'
   get 'favorites/destroy'
+  get '/search' => 'searches#search'
 
   resources :users, only: [:show, :index, :edit, :update] do
     resource :relationships, only: [:create, :destroy]
