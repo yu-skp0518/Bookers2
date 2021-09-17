@@ -83,15 +83,8 @@
 
                       <td><%= @book.body %></td>
 
-                      <td class="favorite-btn">
-                          <% if @book.favorited_by?(current_user) %>
-                                <%= link_to @book.favorites.count, book_favorites_path(@book.id), method: :delete, class: "fas fa-heart heart_red"%>
+                      <%= render 'books/favorite', book: @book %>
 
-                              <% else %>
-
-                                <%= link_to @book.favorites.count, book_favorites_path(@book.id), method: :post, class: "fas fa-heart heart_red" %>
-                          <% end %>
-                      </td>
                       <td>
                         <a class="btn btn-sm btn-success edit_book_14370" href="<%= edit_book_path(@book.id) %>">Edit</a>
                       </td>
@@ -117,13 +110,7 @@
 
                       <td><%= @book.body %></td>
 
-                      <td class="favorite-btn">
-                          <% if @book.favorited_by?(current_user) %>
-                                <%= link_to @book.favorites.count, book_favorites_path(@book.id), method: :delete, class: "fas fa-heart heart_red"%>
-                            <% else %>
-                                <%= link_to @book.favorites.count, book_favorites_path(@book.id), method: :post, class: "fas fa-heart heart_red" %>
-                          <% end %>
-                      </td>
+                      <%= render 'books/favorite', book: @book %>
 
                     </tr>
                   </tbody>
